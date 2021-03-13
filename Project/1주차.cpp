@@ -22,19 +22,20 @@ vector<int> solution(vector<int> progresses, vector<int> speeds) {
     }
     //작업 우선순위 구하기
     int count = 1;
+    int max = temp[0];
     for (int i = 1; i < length; i++) {
-        if (temp[0] - temp[i] > 0) {
-            count++;
-        }
-        if (temp[0] - temp[i] < 0) {
+        if (max < temp[i]) {
             answer.push_back(count);
             count = 1;
+            max = temp[i];
         }
-        else if (i == length - 1) {
+        else {
+            count++;
+        }
+        if (i == length - 1) {
             answer.push_back(count);
         }
     }
-    return answer;
 }
 
 int main() {
